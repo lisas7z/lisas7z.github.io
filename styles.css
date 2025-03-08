@@ -1,5 +1,49 @@
 body{
-    margin: 0;
+    margin: 20pt;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    
 }
+
+.float{
+    display: flex;
+}
+.profile_pic{
+    float: right;
+}
+.text{
+    padding-left: 20px;
+    float: left;
+}
+
+.skill_mech{
+    float: left;
+    align-items: center;
+    justify-content: center;
+    width: 33.33%;
+}
+
+.skill_hardware{
+    width: 33.33%;
+}
+
+.skill_lab{
+    width: 33.33%;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px;
+  }
+
+  .container {
+    padding: 2px 16px;
+  }
+
+  .card-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    }
