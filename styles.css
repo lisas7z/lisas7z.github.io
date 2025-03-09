@@ -2,13 +2,55 @@ body{
     
     max-width: 725px;
     margin: auto;
-    font-family: Calibri;
-    font-size: 14px;
+    font-family: Roboto;
+    font-size: 16px;
     
 
 
-
     /* -------------------------------------------- */
+
+    /* Style for the navigation bar */
+    .navbar {
+        display: flex;
+        background-color: whitesmoke;
+        justify-content: space-between;
+        padding: 10px;
+        margin-bottom: 20px;
+        align-items: center;
+        position: sticky; /* Makes the navbar sticky */
+        top: 0; /* Stick it to the top of the page */
+        z-index: 1000; /* Keeps it above other content */
+    }
+
+    .navbar-left, .navbar-right {
+        display: flex; /* Keep logos aligned horizontally */
+        align-items: center;
+    }
+    
+    .navbar-left a{
+        color: black;
+        padding: 5px 10px;
+        text-decoration: none;
+    }
+    
+    /* Style for each tab */
+    .navbar-right .home {
+        color: black;
+        padding: 14px 20px;
+        text-decoration: none;
+        text-align: center;
+        
+    }
+
+    .navbar-right .resume {
+        color: orangered;
+        padding: 14px 20px;
+        text-decoration: none;
+        text-align: center;
+       
+    }
+    
+     /* -------------------------------------------- */
 
     .float{
         display: flex;
@@ -19,6 +61,14 @@ body{
     .text{
         padding-left: 20px;
         float: left;
+    }
+
+    .email{
+        display: block;
+        background-color: lightgrey;
+        color: orangered;
+        padding: 5px;
+        border-radius: 5px;
     }
 
     /* -------------------------------------------- */
@@ -74,13 +124,11 @@ body{
         font-size: 14px;
         /* text-align: center; */
     }
-
-    .card-link {
-        text-decoration: none; /* Removes underline */
-        color: inherit; /* Keeps the text color unchanged */
-        display: block; /* Makes the link cover the whole card */
+    
+    .card-container a{
+        color: black;
+        text-decoration: none;
     }
-
 
     /* -------------------------------------------- */
 
@@ -105,25 +153,10 @@ body{
     }
     /* -------------------------------------------- */
 
-    /* Style for the navigation bar */
-    .navbar {
-        display: flex;
-        background-color: whitesmoke;
-        justify-content: center;
-        padding: 10px;
-        margin-bottom: 20px;
-        position: sticky; /* Makes the navbar sticky */
-        top: 0; /* Stick it to the top of the page */
-        z-index: 1000; /* Keeps it above other content */
-    }
-
-    /* Style for each tab */
-    .navbar a {
-        color: black;
-        padding: 14px 20px;
-        text-decoration: none;
-        text-align: center;
-        font-size: 16px;
+    video{
+        width: 100%;
+        height: auto;
+        max-width: 600px;
     }
 
 }
