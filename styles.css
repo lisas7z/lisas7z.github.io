@@ -170,9 +170,31 @@ body{
         max-width: 600px;
     }
 
+    /* -------------------------------------------- */
     .reg_link a{
         text-decoration: none;
         color: black;
     }
+
+    /* -------------------------------------------- */
+
+    .alea_container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .alea_img{
+        width: 100%;
+        height: auto;
+        max-width: 600px;
+    }
+
+    .deploy_img{
+        width: 100%;
+        height: auto;
+        max-width: 700px;
+    }
+
+    /* -------------------------------------------- */
 
 }
