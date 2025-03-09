@@ -13,7 +13,7 @@
         </div>
 
         <div class="navbar-right">
-            <p>Machine Learning ROS Robot</p>
+            <a href="/projects/ROS_robot.html">Machine Learning ROS Robot</a>
         </div>
     </div>
 
@@ -21,14 +21,16 @@
         <h1>Machine Learning ROS Robot</h1>
         
             <h2>Video Demo</h2>
-            <div class="video">
-                <video src="/video/gazebo.mp4" autoplay loop muted></video>
+            <div class="video_container">
+                <div class="video">
+                    <video src="/video/gazebo.mp4" autoplay loop muted></video>
+                </div>
             </div>
             <br>
             <hr>
 
             <div>
-                <h2>Key Skills</h2>
+                <h2>Key Techniques</h2>
                 <ol>
                     <li>ROS (Robot Opearting System) & Gazebo Simulaiton & Computer Vision (OpenCV)</li>
                     <li>Machine Learning (Deep Learning, Convolutional Neural Networks)</li>
@@ -40,7 +42,41 @@
 
             <div>
                 <h2>Project Background</h2>
-                <p>...</p>
+                <p class="reg_link"><a href="https://projectlab.engphys.ubc.ca/enph-353/"><u>ENPH 353</u></a>
+                    is a guided, self-directed project course offered by UBC Engineering Physics. 
+                    In this course, the goal is to practice techniques and developments 
+                    in control software and data classification, and the learning will be
+                    demonstrated through a final competition.
+                </p>
+                <p>In the 2024 competition, our task is to develop an autonomous 
+                    robot in the Gazebo simulation environment that is capable of diverse terrain-navigation
+                    (road, grass, and mountain), barrier detection (pedestrain and other moving obstacles), and
+                    character recognition (clueboard reading). The scoring is based on correctly
+                    predicting clue values and adhering to traffic rules within a four-minute 
+                    simulation time.
+                </p>
+            </div>
+
+            <div>
+                <h2>High-Level Summary</h2>
+                <p>This project is a collaboration between Andrew Du and Lisa Shi, by incorporating 
+                    machine learning, control algorithm, and computer vision techniques, we achieved:
+                    <ol>
+                        <li>navigating through a variety of terrain using masking and filtering 
+                            algorithm, along with PID control for line following;</li>
+                        <li>avoiding moving barriers through motion detection;
+                        </li>
+                        <li>accurately capturing characters on the clueboards through thresholding,
+                            filtering, and prespective transformation;
+                        </li>
+                        <li>generating a large dataset of synthetic characters using image transformations
+                            to train a robust CNN classifier;
+                        </li>
+                        <li>developing a ROS-based architecture using ROS nodes and topics to enable
+                            real-time communication between modules.
+                        </li>
+                    </ol>
+                </p>
             </div>
             <hr>
 

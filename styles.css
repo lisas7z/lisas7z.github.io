@@ -4,8 +4,9 @@ body{
     margin: auto;
     font-family: Roboto;
     font-size: 16px;
-    
-
+    p{
+        line-height: 1.5;
+    }
 
     /* -------------------------------------------- */
 
@@ -28,6 +29,12 @@ body{
     }
     
     .navbar-left a{
+        color: black;
+        padding: 5px 10px;
+        text-decoration: none;
+    }
+
+    .navbar-right a{
         color: black;
         padding: 5px 10px;
         text-decoration: none;
@@ -65,7 +72,7 @@ body{
 
     .email{
         display: block;
-        background-color: lightgrey;
+        background-color: beige;
         color: orangered;
         padding: 5px;
         border-radius: 5px;
@@ -92,13 +99,13 @@ body{
     /* -------------------------------------------- */
     .card-container {
         display: flex; /* Enables side-by-side layout */
-        gap: 15px; /* Adds spacing between cards */
+        gap: 20px; /* Adds spacing between cards */
         flex-wrap: wrap; /* Allows wrapping on smaller screens */
         /* justify-content: center; Centers the cards */
     }
 
     .card {
-        width: 230px;
+        width: 225px;
         height: 200px;
         background: #f9f9f9;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -153,10 +160,19 @@ body{
     }
     /* -------------------------------------------- */
 
+    .video_container{
+        display: flex;
+        justify-content: center;
+    }
     video{
         width: 100%;
         height: auto;
         max-width: 600px;
+    }
+
+    .reg_link a{
+        text-decoration: none;
+        color: black;
     }
 
 }
