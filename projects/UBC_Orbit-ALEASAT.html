@@ -80,7 +80,7 @@
                         </li>
                         <li>participate in testing plan/facility development;</li>
                         <li>performing system integration between the Structure and the Payload Subsystem 
-                            (specifically designing the on-boarding camera mounting system).
+                            (designing the on-boarding camera mounting system).
                         </li>
                     </ol> 
                 </p>
@@ -89,14 +89,27 @@
 
             <div>
                 <h2>Mechanical Simulation</h2>
-                <p><u>Disclaimer</u>: Only methodology and basic information about the satellite 
-                    will be presented here.</p>
+                <p><em><u>(Disclaimer</u>: Only methodology and basic information about the satellite 
+                    will be presented here.)</em></p>
                 <ol>
                     <div>
                         <h3><li>Structural Analysis Approach</li></h3>
                             <p>
-                                Requirements
-                                approach
+                                The primary objectives of the structural analysis is to ensure the mechanical
+                                integrity and the peformance of the satellite under various loads and 
+                                environmental conditions it will experience during launch, deloyment, and
+                                operation in space. Specifically, the structural mechanical simulation utilizes
+                                ANSYS Mechanical to verify whether or not the design meets the following critical criterion:
+                                <ol>
+                                    <li>the Margin of Safety (MoS) for all materials must be above zero;</li>
+                                    <li>the resonance frequency must be above cetain level, the specific
+                                        value varies depending on the Launch Provider;</li>
+                                    <li>evaluate the deformation of the satellite under quasi-static
+                                         loading in all directions;</li>
+                                    <li>evaluate the performance of the satellite under stochastic 
+                                        vibrational loading in all directions during launch.
+                                    </li>
+                                </ol>
                             </p>
                     </div>
                     
@@ -105,18 +118,75 @@
                             <div class="alea_container">
                                 <img src="/img/alea_deployed.png" alt="ALEASAT Simplified Model (Deployed State)"
                                  class="deploy_img">
+                                 
                             </div>
+                            <p><em>Figure 1: ALEASAT simplified model.</em></p>
                             <p>
-                                Simplified model
-                               Meshing 
+                                To achieve the objectives, the analysis approach involves performing mechanical
+                                simulation to a finite element model (FEM) of the satellite structure, capturing the essential
+                                features and behaviours of the full-scale structure while reducing the computational
+                                complexity. 
+                            </p>
+                            <p>
+                                The FEM is first generated through simplifications, including:
+                                <ol>
+                                    <li>neglecting electronic chips with minimal mass contribution on PCBs;
+                                    </li>
+                                    <li>representing PCBs as shell elements, capturing in-plane and bending deformations;</li>
+                                    <li>representing heavy components with minimal structural deformation as point masses,
+                                        preserving inertial effects and mass distribution;
+                                    </li>
+                                    <li>representing fasteners as stiff spring elements with defined preload forces,
+                                        simulating clamping effects;
+                                    </li>
+                                </ol>                                
+                            </p>
+                            <p>then, the simplified model is discretized into smaller and manageable elements 
+                                for numerical analysis through meshing.
+                            </p>
+                            <p>In order to generate high-quality meshes resulting in higher simulation accuracy,
+                                the following key steps need to be considered:
+                                <ol>
+                                    <li>partition the model into regions based on geometries, and apply different mesh types in each 
+                                        region;
+                                    </li>
+                                    <li>
+                                        incorporate adaptive mesh refinement by setting coarser mesh in less critical regions
+                                        and higher element density in regions with higher stress concentrations or contact surfaces;
+                                    </li>
+                                    <li>examine mesh convergence by starting with a coarser mesh and refine it progressively, 
+                                        ensuring results do not change significantly with finer meshes.
+                                    </li>
+                                </ol> 
+
                             </p>
                     </div>
 
                     <div>
                         <h3><li>Modal Analysis</li></h3>
                             <p>
-
+                                Modal analysis is a numerical technique used to determine the natural frequencies and mode shapes of 
+                                the satellite structure. It helps ensuring the structural robustness against dynamic vibrational loading 
+                                by checking that resonance does not occur.
                             </p>
+
+                            <p>
+                                The first five modes and their natural frequencies is a sufficient representative of the overall system, 
+                                and a critical frequency is given by ESA, requiring the first natural frequency must not be less than the
+                                critical frequency. Vibration modes with modal effective mass greater than 10% of the total mass are 
+                                reported as critical modes, which might need to be carefully analyzed and controlled in the future.
+                            </p>
+
+                            <p>
+                                Deformations resulted from modal analysis for each mode can be viewed in ANSYS.
+                            </p>
+                            
+                            <div class="alea_container">
+                                <img src="/img/modal.png" alt="ALEASAT Modal Analysis"
+                                    class="deploy_img">
+                            </div>
+                            <p><em>Figure 2: ALEASAT modal analysis mode 2 result, with components hidden for result visibility.</em></p> 
+
                     </div>
 
                     <div>
