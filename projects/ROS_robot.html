@@ -35,7 +35,7 @@
                     <li>ROS (Robot Opearting System) & Gazebo Simulaiton & Computer Vision (OpenCV)</li>
                     <li>Machine Learning (Deep Learning, Convolutional Neural Networks)</li>
                     <li>Control Algorithm (PID Controller)</li>
-                    <li>Data Classification & Data Generator</li>
+                    <li>Data Classification & Data Generation</li>
                 </ol>
             </div>
             <hr>
@@ -83,7 +83,53 @@
 
             <div>
                 <h2>Final Report</h2>
-                <embed src="/document/gazebo.pdf" width="100%" height="1000px"></embed>
+                <!-- <embed src="/document/gazebo.pdf" width="100%" height="1000px"></embed> -->
+                <div id="pdf-container"></div>
+                
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+                
+                <script>
+                    // Path to your PDF file
+                    const pdfUrl = '/document/gazebo.pdf';
+                
+                    // Load the PDF
+                    pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+                      const container = document.getElementById('pdf-container');
+                
+                      // Loop through each page
+                      for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+                        pdf.getPage(pageNumber).then(page => {
+                          // Create a container for each page
+                          const pageDiv = document.createElement('div');
+                          pageDiv.className = 'pdf-page';
+                          container.appendChild(pageDiv);
+                
+                          // Create a canvas for the page
+                          const canvas = document.createElement('canvas');
+                          pageDiv.appendChild(canvas);
+                
+                          // Set up the canvas context
+                          const context = canvas.getContext('2d');
+                          const scale = 3;
+                          const viewport = page.getViewport({ scale });
+                
+                          canvas.height = viewport.height;
+                          canvas.width = viewport.width;
+                
+                          // Render the page
+                          const renderContext = {
+                            canvasContext: context,
+                            viewport: viewport,
+                          };
+                          page.render(renderContext);
+                        }).catch(error => {
+                          console.error(`Error loading page ${pageNumber}: `, error);
+                        });
+                      }
+                    }).catch(error => {
+                      console.error('Error loading PDF: ', error);
+                    });
+                </script>
             </div>
 
     </div>

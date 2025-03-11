@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Lisa Shi's Personal Website</title>
     <link rel="stylesheet" href="/styles.css">
+    <script type="text/javascript" async
+        src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <div class="navbar">
@@ -144,6 +148,15 @@
                             <p>then, the simplified model is discretized into smaller and manageable elements 
                                 for numerical analysis through meshing.
                             </p>
+                            <p>
+                                Note that preload forces are calculated by $$T = KDP$$ where
+                                <ul>
+                                    <li>T = tightening torque;</li>
+                                    <li>K = torque coefficient (0.3 for dry threads);</li>
+                                    <li>D = nominal diameter;</li>
+                                    <li>P = bolt preload.</li>
+                                </ul>
+                            </p>
                             <p>In order to generate high-quality meshes resulting in higher simulation accuracy,
                                 the following key steps need to be considered:
                                 <ol>
@@ -192,15 +205,65 @@
                     <div>
                         <h3><li>Quasi-static Analysis</li></h3>
                             <p>
-
+                                Quasi-static analysis is a type of structural analysis that evalutes the 
+                                system's response to gradually applied loads. This analysis assumes 
+                                that the structure reaches equilibrium at each step of the loading process. 
+                                In our simulation, a 20g acceleration will be applied in each principal direction, simulating static
+                                launch loads to ensure the satellite can withstand gravitational forces and vibrations.
                             </p>
+                            <p>
+                                We need to apply boundary conditions that replicate the constraints within a deployment launcher (e.g., a P-POD):
+                                <ol>
+                                    <li>Fixed supports should be applied in the ±Z directions to account for the presence of multiple satellites
+                                         inside the launcher; </li>
+                                    <li>Small displacements should be allowed in the ±X and ±Y directions to provide tolerances and prevent damage
+                                        to the satellite during the launch process.</li>
+                                </ol>
+                            </p>
+
+                            <p>
+                                By evaluating the deformation and equivalent stress in ANSYS in each direction, MOS can be calculated by:
+                                $$MoS = \frac{Strength}{SF \times Stress} - 1$$ where Stress and Safety Factor (SF) will be different for
+                                 each material.
+                            </p>
+
+                            <div class="alea_container">
+                                <img src="/img/quasi.png" alt="ALEASAT Quasi-static Analysis"
+                                    class="deploy_img">
+                            </div>
+                            <p><em>Figure 3: ALEASAT quasi-static analysis equivalent stress in X direction.</em></p> 
+
                     </div>
 
                     <div>
                         <h3><li>Random Vibration Analysis</li></h3>
                             <p>
-
+                                Random vibration analysis is a method used to evaluate the structure's response to non-deterministic dynamic
+                                (unpredictable) loads. It ensures 
+                                <ol>
+                                    <li>the CubeSat can survive launch vibrations;</li>
+                                    <li>electronic components will not fail due to mechanical fatigue;</li>
+                                    <li>bolted joints remain secure under dynamic loading.</li>
+                                </ol>
                             </p>
+                            <p class="reg_link">
+                                The results from the modal analysis are used as input for the random vibration analysis. According to the guidelines
+                                provided in  
+                                <u><a href="https://explorers.larc.nasa.gov/2019APSMEX/MO/pdf_files/gsfc-std-7000a_final_3-28-18.pdf">General environmental
+                                    Verification Standard (GEVS) For GSFC Flight Programs and Projects
+                                </a></u>,
+                                 random vibration needs to be performed to the qualification level with specific test profile listed in Table 2.4-3.
+                                 Maximum deformation and maximum stress in each direction will be evaluated with 98% confidence interval (3σ); MoS will
+                                 be calculated for each axis, and displacement results will be obtained to verify that the satellite structure stays within 
+                                 the required dynamic envelope.                   
+                            </p>
+
+                            <div class="alea_container">
+                                <img src="/img/gevs.png" alt="ALEASAT Quasi-static Analysis"
+                                    class="table_img">
+                            </div>
+                            <p><em>Figure 3: Table 2.4-3 in GEVS: Generalized Random Vibration Test Levels Components (ELV) 22.7-kg (50-lb) or less.</em></p> 
+
                     </div>
                 </ol>
 
