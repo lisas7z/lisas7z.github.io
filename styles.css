@@ -178,17 +178,18 @@ body{
         flex-direction: column;
         align-items: center;
         gap: 10px;
+    }
 
     .pdf-page {
         margin: 0px;
-      }
+    }
 
     canvas {
         display: block;
         width: 100%;
         height: auto;
         max-width: 725px;
-      }
+    }
 
     /* -------------------------------------------- */
     .reg_link a{
@@ -200,22 +201,11 @@ body{
 
     .alea_container {
         display: flex;
+        align-items: center;
         justify-content: center;
     }
 
     .alea_img{
-        width: 100%;
-        height: auto;
-        max-width: 600px;
-    }
-
-    .deploy_img{
-        width: 100%;
-        height: auto;
-        max-width: 700px;
-    }
-
-    .table_img{
         width: 100%;
         height: auto;
         max-width: 600px;
