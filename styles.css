@@ -71,7 +71,6 @@ body{
     }
 
     .email{
-        display: block;
         display: inline;
         background-color: beige;
         color: orangered;
