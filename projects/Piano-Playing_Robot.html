@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Lisa Shi's Personal Website</title>
     <link rel="stylesheet" href="/styles.css">
+    <script type="text/javascript" async
+        src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -26,7 +30,8 @@
                 <ol>
                     <li>Robotics design, modelling (OnShape), and prototyping (3D printing);</li>
                     <li>Actuator design and motion control;</li>
-                    <li>Audio processing.</li>
+                    <li>Audio processing;</li>
+                    <li>System integration.</li>
                 </ol>
             </div>
             <hr>
@@ -38,7 +43,8 @@
                     currently <strong>working-in-progress</strong>.
                 </p>
                 <p>
-                    The project aims to design a robotic hand mechanism capable of replicating human pianists' ability to play
+                    The goal of the project is to provide accessile, live piano music at a professional-level caliber without
+                    the need for a real-life musician. The project aims to design a robotic hand mechanism capable of replicating human pianists' ability to play
                     different dynamics, articulations, and pitches on a standard upright piano.
                 </p>
                 <p>
@@ -51,16 +57,125 @@
             <hr>
 
             <div>
-                <h2>Project Decomposition</h2>
-            
                 <div>
-                    <h3>System Overview</h3>
+                    <h2>System Overview</h2>
                     <div class="alea_container">
                         <img src="/img/piano_system.png" alt="Piano-Playing Robot System Design" class="alea_img">
                     </div>
-                    
+                    <p>
+                        <em>Figure 1: Piano-Playing Robot System Design.</em>
+                    </p>
+                </div>
+
+                <!-- <div>
+                    <h2>Piano System Identification</h2>
+                    <div>
+                        <h3>Motion Profiles</h3>
+                    </div>
+                </div> -->
+
+                <br>
+
+                <div>
+                    <h2>Robot Hardware</h2>
+
+                    <div>
+                        <h3>Actuator Design</h3>
+                        <p>
+                            Once we acquire the necessary position/velocity data to generate a motion profile,
+                            we need an actuator to excecute these instructions, and the actuator we have
+                            selected is the voice coil.
+                        </p>
+                        <p>
+                            A rotary voice coil is a type of motor containg a coil and permanent magnets. 
+                            Its basic principle follows the Lorentz Force Law, where the magnetic flux generated
+                            from two permanent magnets interacts with the current-carrying coil, producing a
+                            magnetic force. The magnitude of the force can be calculated by:
+
+                            $$F = nBIℓ$$
+
+                            where
+                            <ul>
+                                <li>n = number of loops in the coil</li>
+                                <li>B = magnetic field strength</li>
+                                <li>I = current</li>
+                                <li>ℓ = length of one side of the coil</li>
+                            </ul>
+                        </p>
+                        <div class="alea_container">
+                            <img src="/img/vc.png" alt="Voice Coil" class="alea_img">
+                        </div>
+                        <p>
+                            <em>Figure 2: Rotary voice coil setup with magnetic force generated running in the 
+                                -x direction.
+                            </em>
+                        </p>
+                        <p>
+                            As shown in the diagram above, we see that when magnetic flux is running from
+                            the north pole to the south pole, and two sides of the coil have current running
+                            in the opposite directions. By Right-hand rule, we can tell that the magnetic force
+                            generated from both magnets is towards the -x direction. As soon as the coil with 
+                            out-of-page current reaches the red magnet, the magnetic force will switch direction, 
+                            allowing the coil to move toward the +x direction.
+                        </p>
+
+                        <div class="alea_container">
+                            <img src="/img/vc_schematics.png" alt="Voice Coil Schematics" class="alea_img">
+                        </div>
+                        <p>
+                            <em>Figure 3: A voice coil schematic diagram showing current running in CCW direction
+                                and magnetic field in reversed directions, generating a magentic force in the downward
+                                direction by the Right-hand Rule.
+                            </em>
+                        </p>
+                        <p>
+                            Figure 3 shows the schematic diagram of another paper utilizing a voice coil to achieve 
+                            downward forces to press a pinao key. With this setup in mind, we have developed our own
+                            version of rotary voice coil to achieve the pressing and releasing of the piano key.
+                        </p>
+                        <div class="alea_container">
+                            <img src="/img/vc_cad.png" alt="Voice Coil CAD model" class="alea_img">
+                        </div>
+                        <p>
+                            <em>Figure 4: CAD model of the rotary voice coil design.</em>
+                        </p>
+                        <p>
+                            The figure above is the CAD model of our actuator design. The finger and coil is one
+                            solid body connected to the base using two spring steel flexure bearings, and two permanent
+                            magnets are mounted at the back of the base. When there is current running through the coil, 
+                            the finger will be moved to the desired position by the magnetic force; when current is turned
+                            off, the spring force in the flexure bearings will restore the finger back to it's original
+                            position, achieving the release action.
+                        </p>
+                        <br>
+
+
+                    </div>
+                    <!-- <div>
+                        <h3>Motion Feedback</h3>
+                    </div> -->
+
+                    <div>
+                        <h3>Audio Calibration</h3>
+                        <div class="alea_container">
+                            <img src="/img/piano_audio.png" alt="Piano-Playing Robot Audio Calibration System" class="alea_img">
+                        </div>
+                        <p>
+                            <em>Figure 5: Piano-Playing Robot Audio Calibration System-level Diagram.</em>
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- <div>
+                    <h2>Music Software</h2>
+                </div> -->
+
+                
             </div>
-            <br>
-            <h1>PAGE WORK IN-PROGRESS ...</h1>
+
+            <hr>
+            <h1>Page Work-in progress...</h1>
+
     </div>
 </body>
