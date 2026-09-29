@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lisa Shi's Personal Website</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
@@ -19,71 +19,71 @@
 
     <div>
         <h1>Machine Learning ROS Robot</h1>
-        
-            <h2>Video Demo</h2>
-            <div class="video_container">
-                <div class="video">
-                    <video src="/video/gazebo.mp4" autoplay loop muted></video>
-                </div>
-            </div>
-            <br>
-            <hr>
 
-            <div>
-                <h2>Key Techniques</h2>
-                <ol>
-                    <li>ROS (Robot Opearting System) & Gazebo Simulaiton & Computer Vision (OpenCV)</li>
-                    <li>Machine Learning (Deep Learning, Convolutional Neural Networks)</li>
-                    <li>Control Algorithm (PID Controller)</li>
-                    <li>Data Classification & Data Generation</li>
-                </ol>
-            </div>
-            <hr>
+        <h2>Video Demo</h2>
+        <div class="video_container">
+            <div class="video"><video src="/video/gazebo.mp4" controls autoplay loop muted playsinline></video></div>
+        </div>
+        <hr>
 
-            <div>
-                <h2>Project Background</h2>
-                <p class="reg_link"><a href="https://projectlab.engphys.ubc.ca/enph-353/"><u>ENPH 353</u></a>
-                    is a guided, self-directed project course offered by UBC Engineering Physics. 
-                    In this course, the goal is to practice techniques and developments 
-                    in control software and data classification, and the learning will be
-                    demonstrated through a final competition.
-                </p>
-                <p>In the 2024 competition, our task is to develop an autonomous 
-                    robot in the Gazebo simulation environment that is capable of terrain-navigation
-                    (road, grass, and mountain), barrier detection (pedestrain and other moving obstacles), and
-                    character-recognition (clueboard reading). The scoring is based on correctly
-                    predicting clue values and adhering to traffic rules within a four-minute 
-                    simulation time.
-                </p>
-            </div>
-            <hr>
+        <div>
+            <h2>Key Techniques</h2>
+            <ol>
+                <li>ROS node architecture and Gazebo simulation</li>
+                <li>OpenCV image processing, clueboard detection, and perspective correction</li>
+                <li>Synthetic character generation and CNN classification</li>
+                <li>Image-based navigation, PID control, and moving-obstacle detection</li>
+            </ol>
+        </div>
+        <hr>
 
-            <div>
-                <h2>High-Level Summary</h2>
-                <p>This project is a collaboration between a team of two, by incorporating 
-                    machine learning, control algorithm, and computer vision techniques, we achieved:
-                    <ol>
-                        <li>navigating through a variety of terrain using masking and filtering 
-                            algorithm, along with PID control for line following;</li>
-                        <li>avoiding moving barriers through motion detection;
-                        </li>
-                        <li>accurately capturing characters on the clueboards through thresholding,
-                            filtering, and prespective transformation;
-                        </li>
-                        <li>generating a large dataset of synthetic characters using image transformations
-                            to train a robust CNN classifier;
-                        </li>
-                        <li>developing a ROS-based architecture using ROS nodes and topics to enable
-                            real-time communication between modules.
-                        </li>
-                    </ol>
-                </p>
+        <div>
+            <h2>Project Background</h2>
+            <p>For <a href="https://projectlab.engphys.ubc.ca/enph-353/">UBC Engineering Physics ENPH 353</a>, our team of two built an autonomous robot for a four-minute competition in Gazebo. It had to navigate roads, grass, and mountain terrain, avoid obstacles, read eight clueboards, and obey traffic rules.</p>
+            <figure class="project-figure">
+                <img src="/img/ros-course-map.png" alt="Annotated map of the Gazebo competition course" loading="lazy">
+                <figcaption>Competition environment from our final report, showing the road, grass, mountain, clueboard, and tunnel sections.</figcaption>
+            </figure>
+        </div>
+        <hr>
+
+        <div>
+            <h2>High-Level Summary</h2>
+            <p>The robot combined image-based navigation, obstacle detection, clueboard processing, CNN character recognition, and a modular ROS system. Camera data fed the controller and a separate clue detector, so sign processing could run alongside driving.</p>
+            <figure class="project-figure">
+                <img src="/img/ros-architecture.png" alt="ROS node and topic architecture" loading="lazy">
+                <figcaption>System architecture from the final report: the clue detector and robot controller communicate through ROS topics.</figcaption>
+            </figure>
+            <p><strong>My contributions:</strong> I focused on clueboard detection, character trimming, and integrating recognition with the ROS system. My teammate implemented the PID driving algorithm, pedestrian detection, and the neural-network implementation. We jointly worked on roundabout navigation and training-data generation.</p>
+        </div>
+        <hr>
+
+        <div>
+            <h2>Clueboard Detection and Character Recognition</h2>
+            <p>Our image pipeline used HSV color thresholds and contour filters to locate blue clueboards, removed the sky from the mask, corrected the board perspective, and separated its characters. A CNN then classified the cropped characters into 36 alphanumeric labels. Synthetic transformations varied blur, shape, and noise in the training images.</p>
+            <div class="figure-grid" aria-label="Clueboard recognition stages">
+                <figure class="project-figure"><img src="/img/ros-clue-scene.png" alt="Clueboard seen by robot camera" loading="lazy"><figcaption>Camera view and detected board.</figcaption></figure>
+                <figure class="project-figure"><img src="/img/ros-clue-board.png" alt="Perspective-corrected clueboard" loading="lazy"><figcaption>Board isolated and perspective corrected.</figcaption></figure>
+                <figure class="project-figure"><img src="/img/ros-clue-characters.png" alt="Extracted SIZE and HERD characters" loading="lazy"><figcaption>Character rows prepared for classification.</figcaption></figure>
             </div>
-            <hr>
+            <p>The final report records 100% training and validation accuracy on synthetic samples in the last epoch. That result describes the synthetic dataset; clue detection in the competition remained less reliable.</p>
+            <figure class="project-figure">
+                <img src="/img/ros-cnn-accuracy.png" alt="CNN training and validation accuracy by epoch" loading="lazy">
+                <figcaption>Training and validation accuracy plot extracted from our final report.</figcaption>
+            </figure>
+        </div>
+        <hr>
+
+        <div>
+            <h2>Navigation and Competition Outcome</h2>
+            <p>For line following, the robot used thresholded camera images to find road boundaries and compare their centroids with the image center. The report describes terrain-specific masks for road, grass, and mountain sections, PID steering, and motion-based pedestrian detection.</p>
+            <p>Our team scored <strong>29 points</strong>: 24 from the first four clueboards and a five-point tunnel bonus. The fifth board was missed in the grass section, disrupting later clue detection, and the robot did not reach the final board before the four-minute limit. The report recommends more reliable separation of connected characters and a fallback route to the tunnel.</p>
+        </div>
+        <hr>
 
             <div>
                 <h2>Final Report</h2>
-                <!-- <embed src="/document/gazebo.pdf" width="100%" height="1000px"></embed> -->
+                <p><a href="/document/gazebo.pdf">Download the full ENPH 353 final report (PDF)</a>, co-authored with Andrew Du.</p>
                 <div id="pdf-container"></div>
                 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
