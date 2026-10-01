@@ -141,8 +141,17 @@ canvas {
     max-width: 600px;
 }
 
-/* Expandable project panels */
+/* Shared font for the home page and project pages */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
 
+* {
+    box-sizing: border-box;
+}
+
+/* Expandable panels */
 .project-panel {
     margin-bottom: 16px;
     border: 1px solid #ddd;
@@ -150,22 +159,37 @@ canvas {
     overflow: hidden;
 }
 
-.project-panel summary {
+.project-panel > summary {
     padding: 16px;
     background: #f5f5f5;
+    font-family: inherit;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
 }
 
-.project-panel summary:hover {
+.project-panel > summary:hover {
     background: #eaeaea;
 }
 
-.project-panel[open] summary {
+.project-panel[open] > summary {
     border-bottom: 1px solid #ddd;
 }
 
+.project-panel > .project-content {
+    padding: 16px;
+}
+
+/* Images above the embedded project page */
+.project-panel > .project-content > img {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 0 auto 16px;
+}
+
+/* Embedded project page */
 .project-panel iframe {
     display: block;
     width: 100%;
@@ -173,34 +197,14 @@ canvas {
     border: none;
 }
 
-/* Content inside each project page */
+/* Images and videos inside each project page */
+.project-content img,
+.project-content video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
 
 .project-content figure {
     margin: 24px 0;
-}
-
-.project-content figcaption {
-    margin-top: 8px;
-    color: #555;
-    font-size: 14px;
-    font-style: italic;
-    line-height: 1.5;
-    text-align: center;
-}
-
-/* Smaller screens */
-
-@media (max-width: 600px) {
-    .skills_container {
-        flex-direction: column;
-    }
-
-    .text {
-        padding-left: 0;
-    }
-
-    .navbar-right .home,
-    .navbar-right .resume {
-        padding: 10px;
-    }
 }
